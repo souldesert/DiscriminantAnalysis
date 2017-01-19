@@ -9,18 +9,21 @@ disp(isGreater1);
 disp(F2);
 disp(isGreater2);
 load check.txt
+disp(check);
+checkResult = zeros(size(check, 1), 1);
 for i = 1:size(check, 1)
     F = check(i,:) * A1;
     if (F > F1 && isGreater1 == 0) || (F < F1 && isGreater1 == 1)
-        disp('1st class');
+        checkResult(i) = 1;
     else
         F = check(i,:) * A2;
         if (F > F2 && isGreater2 == 0) || (F < F2 && isGreater2 == 1)
-            disp('2nd class');
+            checkResult(i) = 2;
         else
-            disp('3rd class');
+            checkResult(i) = 3;
         end
     end
 end
-visualize(one, two, three, check, A1, A2);
+disp(checkResult);
+visualize(one, two, three, check, A1, A2, checkResult);
              
